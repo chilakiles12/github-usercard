@@ -23,8 +23,9 @@ axios
            create a new component and add it to the DOM as a child of .cards
 */
 let cards = document.querySelector('.cards');
-cards.textContent = 'cards';
-console.log(typeof cards);
+cards.textContent = 'start of cards container';
+cards.style.backgroundColor = 'yellow';
+
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
           , manually find some other users' github handles, or use the list found 
@@ -63,7 +64,6 @@ function domCreator(data) {
 
   const cardInfo = document.createElement('div');
   cardInfo.classList.add('card-info');
-  cardInfo.textContent = 'start of card info';
 
   let name = document.createElement('h3');
   name.classList.add('name');
@@ -108,7 +108,7 @@ function domCreator(data) {
 
   return domCreator;
 }
-
+domCreator();
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
