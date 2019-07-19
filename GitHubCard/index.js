@@ -4,9 +4,9 @@
 */
 axios
   .get('https://api.github.com/users/chilakiles12')
-  .then(function(response) {
+  .then(function(data) {
     // handle success
-    console.log(response);
+    console.log(data);
   })
   .catch(function(error) {
     // handle error
@@ -22,7 +22,9 @@ axios
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
 */
-
+let cards = document.querySelector('.cards');
+cards.textContent = 'cards';
+console.log(typeof cards);
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
           , manually find some other users' github handles, or use the list found 
@@ -32,8 +34,6 @@ axios
           Using that array, iterate over it, requesting data for each user, creating a new card for each
           user, and adding that card to the DOM.
 */
-
-const followersArray = [];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -54,6 +54,60 @@ const followersArray = [];
 </div>
 
 */
+function domCreator(data) {
+  let newCard = document.createElement('card');
+  newCard.classList.add('card');
+
+  const img = document.createElement('img');
+  // img.src = data.avatarUrl;
+
+  const cardInfo = document.createElement('div');
+  cardInfo.classList.add('card-info');
+  cardInfo.textContent = 'start of card info';
+
+  let name = document.createElement('h3');
+  name.classList.add('name');
+  // name.textContent = data.name;
+
+  let userName = document.createElement('p');
+  userName.classList.add('username');
+  // userName.textContent = data.followersUrl(name);
+
+  let location = document.createElement('p');
+  // location.textContent = data.location;
+
+  let profile = document.createElement('p');
+  profile.textContent = 'Profile:';
+
+  let anchor = document.createElement('a');
+  // anchor.href = data.followingUrl;
+  profile.appendChild(anchor);
+
+  let followers = document.createElement('p');
+  // followers.textContent = 'Followers:';followers.textContent = data.followers;
+
+  let following = document.createElement('p');
+  following.textContent = 'Following';
+  // following.dataset = data.following;
+
+  let bio = document.createElement('p');
+  bio.textContent = 'Bio';
+
+  console.log(
+    newCard,
+    img,
+    cardInfo,
+    name,
+    userName,
+    location,
+    profile,
+    followers,
+    following,
+    bio
+  );
+
+  return domCreator;
+}
 
 /* List of LS Instructors Github username's: 
   tetondan
